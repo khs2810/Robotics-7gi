@@ -1396,8 +1396,9 @@ MonoBehaviour:
   type: 0
   rod: {fileID: 379490356}
   minPos: 0.36
-  maxPos: 1.7
-  speed: 2
+  maxPos: 1.9
+  speed: 1
+  returnSpeed: 3
   isMoving: 0
   isFrontEnd: 0
 --- !u!1 &449561591
@@ -2092,7 +2093,7 @@ GameObject:
   - component: {fileID: 538945779}
   m_Layer: 0
   m_Name: "\uAE08\uC18D"
-  m_TagString: Untagged
+  m_TagString: "\uAE08\uC18D"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2681,7 +2682,7 @@ GameObject:
   - component: {fileID: 692692104}
   m_Layer: 0
   m_Name: "\uD50C\uB77C\uC2A4\uD2F1"
-  m_TagString: Untagged
+  m_TagString: "\uD50C\uB77C\uC2A4\uD2F1"
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3616,11 +3617,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cylinder
   forwardSignal: 0
   backwardSignal: 0
-  type: 0
+  type: 1
   rod: {fileID: 978697957}
-  minPos: 0
-  maxPos: 0
-  speed: 2
+  minPos: 0.42
+  maxPos: 1.1
+  speed: 1
+  returnSpeed: 3
   isMoving: 0
   isFrontEnd: 0
 --- !u!1 &928716376
@@ -5313,11 +5315,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Cylinder
   forwardSignal: 0
   backwardSignal: 0
-  type: 0
+  type: 1
   rod: {fileID: 1874946734}
-  minPos: 0
-  maxPos: 0
+  minPos: 0.1
+  maxPos: 1.5
   speed: 2
+  returnSpeed: 3
   isMoving: 0
   isFrontEnd: 0
 --- !u!1 &1251484065
@@ -5792,9 +5795,10 @@ MonoBehaviour:
   backwardSignal: 0
   type: 0
   rod: {fileID: 1694404544}
-  minPos: 0
-  maxPos: 0
-  speed: 2
+  minPos: 0.42
+  maxPos: 1.77
+  speed: 3
+  returnSpeed: 3
   isMoving: 0
   isFrontEnd: 0
 --- !u!1 &1396044261
@@ -7550,6 +7554,7 @@ GameObject:
   - component: {fileID: 1835936130}
   - component: {fileID: 1835936129}
   - component: {fileID: 1835936128}
+  - component: {fileID: 1835936132}
   m_Layer: 0
   m_Name: TowerLamp
   m_TagString: Untagged
@@ -7655,6 +7660,24 @@ Transform:
   - {fileID: 30346996}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1835936132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835936127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2d84f1b8b1eab445bb851ac997fcc77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  redLampSignal: 0
+  yellowLampSignal: 0
+  greenLampSignal: 0
+  redLampMR: {fileID: 30346998}
+  yellowLampMR: {fileID: 449561594}
+  greenLampMR: {fileID: 2117854168}
 --- !u!1 &1874946733
 GameObject:
   m_ObjectHideFlags: 0

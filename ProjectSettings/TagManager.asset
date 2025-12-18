@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Obstacle
   - ball
+  - "\uAE08\uC18D"
+  - "\uD50C\uB77C\uC2A4\uD2F1"
   layers:
   - Default
   - TransparentFX
