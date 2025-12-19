@@ -36,6 +36,7 @@ namespace MPSSimulator
 
                     sensorSignal = true;
                     meshRenderer.material.color = new Color(1, 0, 0, 0.7f);
+
                     break;
                 case 센서타입.유도형센서:
                     
