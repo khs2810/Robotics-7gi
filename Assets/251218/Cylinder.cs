@@ -45,15 +45,23 @@ public class Cylinder : MonoBehaviour
         //  PLC로 부터 계속해서 X00 신호를 받아줌
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            forwardSignal = !forwardSignal;
+            forwardSignal = true;
             //MoveCylinderForward();
+        }
+        else if (Input.GetKeyUp(KeyCode.Space))
+        {
+            forwardSignal = false;
         }
 
         //  PLC로 부터 계속해서 X01 신호를 받아줌
         if (Input.GetKeyUp(KeyCode.B))
         {
-            backwardSignal = !backwardSignal;
+            backwardSignal = true;
             //MoveCylinderBackward();
+        }
+        else if (Input.GetKeyUp(KeyCode.B))
+        {
+            backwardSignal = false;
         }
     }
 
@@ -70,14 +78,15 @@ public class Cylinder : MonoBehaviour
                 //  WaitUntil 안의 내용이 참이라면 다음 시퀀스 진행
                 yield return new WaitUntil(() => (forwardSignal && !isMoving) || (isFrontEnd && !isMoving));
             }
-            else if (type == 솔레노이드타입.단방향솔레노이드)
+            else if (type == 솔레노이드타입.양방향솔레노이드)
             {
                 //  WaitUntil 안의 내용이 참이라면 다음 시퀀스 진행
                 yield return new WaitUntil(() => forwardSignal && !isMoving);
             }
-                Vector3 front = new Vector3(0, maxPos, 0);
 
-                yield return CoMoveCylinder(front); //  전진중...
+            Vector3 front = new Vector3(0, maxPos, 0);
+
+            yield return CoMoveCylinder(front); 
         }
     }
 
@@ -85,18 +94,21 @@ public class Cylinder : MonoBehaviour
     {
         while (true)
         {
+            if(type == 솔레노이드타입.양방향솔레노이드)
+            {
+                //  WaitUntil 안의 내용이 참이라면 다음 시퀀스 진행
+                yield return new WaitUntil(() => backwardSignal && !isMoving);
 
-            //  WaitUntil 안의 내용이 참이라면 다음 시퀀스 진행
-            yield return new WaitUntil(() => backwardSignal && !isMoving);
+                Vector3 back = new Vector3(0, minPos, 0);
 
-            Vector3 back = new Vector3(0, minPos, 0);
+                print("후진중...");
+                yield return CoMoveCylinder(back);
+                print("후진완료.");
 
-            print("후진중...");
-            yield return CoMoveCylinder(back); //  후진중...
-            print("후진완료.");
+            }
+
+            yield return null;  //  *   주의: 한프레임 대기 없다면 프로그램 정지
         }
-
-        yield return null;  //  *   주의: 한프레임 대기 없다면 프로그램 정지
     }
 
     /// <summary>
@@ -139,7 +151,7 @@ public class Cylinder : MonoBehaviour
                         curSpeed = returnSpeed;
                     }
                     else
-                        curSpeed = returnSpeed;
+                        curSpeed = speed;
 
                 }
                 else if(type == 솔레노이드타입.양방향솔레노이드)
@@ -161,7 +173,6 @@ public class Cylinder : MonoBehaviour
                         else if (backwardSignal)
                         {
                             to = new Vector3(0, minPos, 0);
-                            speed = returnSpeed;
                         }
                     }
 
@@ -173,7 +184,7 @@ public class Cylinder : MonoBehaviour
 
                 float distance = direction.magnitude;
                 
-                if (distance < 0.05f)
+                if (distance < 0.1f)
                 {
                     isMoving = false;
 
