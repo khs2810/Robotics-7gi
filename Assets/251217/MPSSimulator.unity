@@ -820,6 +820,7 @@ GameObject:
   - component: {fileID: 251664341}
   - component: {fileID: 251664340}
   - component: {fileID: 251664339}
+  - component: {fileID: 251664343}
   m_Layer: 0
   m_Name: SensingArea
   m_TagString: Untagged
@@ -914,12 +915,26 @@ Transform:
   m_GameObject: {fileID: 251664338}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7656, y: 2.5743818, z: 0.16015}
-  m_LocalScale: {x: 0.97153956, y: 0.3288, z: 0.6797}
+  m_LocalPosition: {x: -1.7656, y: 2.431, z: 0.16015}
+  m_LocalScale: {x: 0.97153956, y: 0.041987758, z: 0.6797}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &251664343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251664338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10745295db8b4c645b9a7a3cfef8ecc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MPSSimulator.Sensor
+  sensorSignal: 1
+  type: 0
 --- !u!1 &266578703
 GameObject:
   m_ObjectHideFlags: 0
@@ -1975,6 +1990,7 @@ GameObject:
   - component: {fileID: 526286054}
   - component: {fileID: 526286053}
   - component: {fileID: 526286052}
+  - component: {fileID: 526286056}
   m_Layer: 0
   m_Name: "\uAE08\uC18D\uAC10\uC9C0\uC13C\uC11C"
   m_TagString: Untagged
@@ -2078,6 +2094,20 @@ Transform:
   - {fileID: 884873056}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &526286056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 526286051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10745295db8b4c645b9a7a3cfef8ecc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MPSSimulator.Sensor
+  sensorSignal: 1
+  type: 1
 --- !u!1 &538945773
 GameObject:
   m_ObjectHideFlags: 0
@@ -8367,6 +8397,7 @@ GameObject:
   - component: {fileID: 1968823180}
   - component: {fileID: 1968823179}
   - component: {fileID: 1968823178}
+  - component: {fileID: 1968823182}
   m_Layer: 0
   m_Name: "\uADFC\uC811\uC13C\uC11C"
   m_TagString: Untagged
@@ -8470,6 +8501,20 @@ Transform:
   - {fileID: 1345325070}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1968823182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1968823177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10745295db8b4c645b9a7a3cfef8ecc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MPSSimulator.Sensor
+  sensorSignal: 1
+  type: 0
 --- !u!1 &2040084191
 GameObject:
   m_ObjectHideFlags: 0

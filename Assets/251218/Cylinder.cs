@@ -50,7 +50,7 @@ public class Cylinder : MonoBehaviour
         }
 
         //  PLC로 부터 계속해서 X01 신호를 받아줌
-        if (Input.GetKeyDown(KeyCode.B))
+        if (Input.GetKeyUp(KeyCode.B))
         {
             backwardSignal = !backwardSignal;
             //MoveCylinderBackward();
