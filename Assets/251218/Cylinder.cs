@@ -7,6 +7,8 @@ using UnityEngine;
 /// 공압이 들어와서 실린더의 Rod가 전진 or 후진한다.
 /// 속성: 실린더 Rod transform, 실린더 이동을 위한 minPos, maxPos, 속도
 ///       단방향, 양방향 옵션
+/// 기능추가: 실린더 Rod가 전방, 후방에 위치했을 경우 LS0, LS1 신호를 켜준다.
+/// 속성: LS0, LS1 Signal, LS들의 meshRenderer
 /// </summary>
 public class Cylinder : MonoBehaviour
 {
@@ -19,6 +21,8 @@ public class Cylinder : MonoBehaviour
     [Header("PLC 신호")]
     public bool forwardSignal;
     public bool backwardSignal;
+    public bool lsForwardSignal;
+    public bool lsBackwardSignal;
 
     [Header("실린더 설정")]
     [SerializeField] 솔레노이드타입 type = 솔레노이드타입.단방향솔레노이드;
@@ -29,7 +33,8 @@ public class Cylinder : MonoBehaviour
     [SerializeField] float returnSpeed = 3;   // 단솔일 경우 Rod가 돌아오는 속도
     [SerializeField] bool isMoving = false;     // 현재 실린더가 움직이는지 여부
     [SerializeField] bool isFrontEnd = false;   // 현재 실린더가 앞쪽에 있는지 여부
-
+    [SerializeField] MeshRenderer lsForwardMR;
+    [SerializeField] MeshRenderer lsBackwardMR;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -183,19 +188,27 @@ public class Cylinder : MonoBehaviour
                 {
                     isMoving = false;
 
-                    if (type == 솔레노이드타입.단방향솔레노이드)
+                    // 실린더가 전진완료 시 작동
+                    if(forwardSignal)
                     {
-                        isFrontEnd = true;
+                        lsForwardSignal = isFrontEnd = true;
+                        lsForwardMR.material.color = new Color(1, 0, 0, 0.7f);
+                    }
+
+                    // 실린더가 후진완료 시 작동
+                    if(backwardSignal)
+                    {
+                        lsBackwardSignal = true;
+                        lsBackwardMR.material.color = new Color(1, 0, 0, 0.7f);
                     }
 
                     break;
                 }
                 else
                 {
-                    if (type == 솔레노이드타입.단방향솔레노이드)
-                    {
-                        isFrontEnd = false;
-                    }
+                    lsForwardSignal = lsBackwardSignal = isFrontEnd = false;
+                    lsForwardMR.material.color = new Color(0, 0, 0, 0.7f);
+                    lsBackwardMR.material.color = new Color(0, 0, 0, 0.7f);
                 }
 
                 // 크기가 1인 벡터로 만든다.
