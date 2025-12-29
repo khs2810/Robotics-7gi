@@ -139,6 +139,34 @@ public class RobotManager : MonoBehaviour
         }
     }
 
+    IEnumerator CoStartSequence()
+    {
+        // TODO: for문으로 교체 후 step position/rotation 이동
+        foreach (Step step in steps)
+        {
+            yield return CoMove(originPos, step.position, step.interval);
+        }
+
+        isMoving = false;
+    }
+
+    IEnumerator CoMove(Vector3 from, Vector3 to, float t)
+    {
+        float curTime = 0;
+
+        while(true)
+        {
+            curTime += Time.deltaTime;
+
+            if (curTime > t)
+                break;
+
+            robot1.ik.localPosition = Vector3.Lerp(from, to, curTime / t);
+
+            yield return null;
+        }
+    }
+
     /// <summary>
     /// SetOrigin 버튼 클릭시 원점으로 복귀
     /// </summary>
